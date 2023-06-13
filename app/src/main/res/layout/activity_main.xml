@@ -6,13 +6,372 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/top_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.card.MaterialCardView
+                android:id="@+id/sort_date_btn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="14dp"
+                android:focusable="true"
+                android:clickable="true"
+                app:strokeWidth="1sp"
+                app:strokeColor="@color/black">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/sort1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="2dp">
+
+                <ImageView
+                        android:id="@+id/ic_sort1"
+                        android:src="@drawable/ic_sort"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:tint="@color/red_color"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+
+                <TextView
+                        android:text="дата изменения сделки"
+                        android:textColor="@color/black"
+                        android:layout_width="60dp"
+                        android:layout_height="22dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/ic_sort1"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:textSize="8sp"
+                        android:textAlignment="center" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+                android:id="@+id/sort_name_btn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="14dp"
+                android:focusable="true"
+                android:clickable="true"
+                app:strokeWidth="1sp"
+                app:strokeColor="@color/black">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/sort2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp">
+
+                <ImageView
+                        android:id="@+id/ic_sort2"
+                        android:src="@drawable/ic_sort"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+
+                <TextView
+                        android:text="имя инструмента"
+                        android:textColor="@color/black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/ic_sort2"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:textSize="8sp"
+                        android:textAlignment="center" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+                android:id="@+id/sort_price_btn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="14dp"
+                android:focusable="true"
+                android:clickable="true"
+                app:strokeWidth="1sp"
+                app:strokeColor="@color/black">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/sort3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="2dp">
+
+                <ImageView
+                        android:id="@+id/ic_sort3"
+                        android:src="@drawable/ic_sort"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+
+                <TextView
+                        android:text="цена сделки"
+                        android:textColor="@color/black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/ic_sort3"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:textSize="8sp"
+                        android:textAlignment="center" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+                android:id="@+id/amount_sort_btn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="14dp"
+                android:focusable="true"
+                android:clickable="true"
+                app:strokeWidth="1sp"
+                app:strokeColor="@color/black">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/sort4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="2dp">
+
+                <ImageView
+                        android:id="@+id/ic_sort4"
+                        android:src="@drawable/ic_sort"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+
+                <TextView
+                        android:id="@+id/sort_transaction_volume"
+                        android:text="объем сделки"
+                        android:textColor="@color/black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/ic_sort4"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:textSize="8sp"
+                        android:textAlignment="center" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+                android:id="@+id/sort_side_btn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="14dp"
+                android:focusable="true"
+                android:clickable="true"
+                app:strokeWidth="1sp"
+                app:strokeColor="@color/black">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/sort5"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="2dp">
+
+                <ImageView
+                        android:id="@+id/ic_sort5"
+                        android:src="@drawable/ic_sort"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+
+                <TextView
+                        android:text="сторона сделки"
+                        android:textColor="@color/black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/ic_sort5"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:textSize="8sp"
+                        android:textAlignment="center" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <ImageButton
+            android:id="@+id/up_sort_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:src="@drawable/ic_up"
+            app:layout_constraintTop_toBottomOf="@+id/top_view"
+            app:layout_constraintEnd_toStartOf="@id/down_sort_btn"/>
+
+    <ImageButton
+            android:id="@+id/down_sort_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:src="@drawable/ic_down"
+            app:layout_constraintTop_toBottomOf="@+id/top_view"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/name_sort_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="4dp"
+            android:layout_marginVertical="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/up_sort_btn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+                android:id="@+id/time_stamp_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="дата изменения сделки"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/name_tv"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintWidth_default="spread"
+                android:textSize="12sp" />
+
+        <com.google.android.material.divider.MaterialDivider
+                android:layout_width="1dp"
+                android:layout_height="0dp"
+                android:layout_marginHorizontal="4dp"
+                app:dividerColor="@color/black"
+                app:layout_constraintStart_toEndOf="@id/time_stamp_tv"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+                android:id="@+id/name_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="имя инструмента"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@id/time_stamp_tv"
+                app:layout_constraintEnd_toStartOf="@+id/price_tv"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintWidth_default="spread"
+                android:textSize="12sp" />
+
+        <com.google.android.material.divider.MaterialDivider
+                android:layout_width="1dp"
+                android:layout_height="0dp"
+                android:layout_marginHorizontal="4dp"
+                app:dividerColor="@color/black"
+                app:layout_constraintStart_toEndOf="@id/name_tv"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+                android:id="@+id/price_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:gravity="center"
+                android:text="цена сделки"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@id/name_tv"
+                app:layout_constraintEnd_toStartOf="@+id/amount_tv"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintWidth_default="spread"
+                android:textSize="12sp" />
+
+        <com.google.android.material.divider.MaterialDivider
+                android:layout_width="1dp"
+                android:layout_height="0dp"
+                android:layout_marginHorizontal="4dp"
+                app:dividerColor="@color/black"
+                app:layout_constraintStart_toEndOf="@id/price_tv"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+                android:id="@+id/amount_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:gravity="center"
+                android:text="объем сделки"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@id/price_tv"
+                app:layout_constraintEnd_toStartOf="@+id/side_tv"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintWidth_default="spread"
+                android:textSize="12sp" />
+
+        <com.google.android.material.divider.MaterialDivider
+                android:layout_width="1dp"
+                android:layout_height="0dp"
+                android:layout_marginHorizontal="4dp"
+                app:dividerColor="@color/black"
+                app:layout_constraintStart_toEndOf="@id/amount_tv"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+                android:id="@+id/side_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:gravity="center"
+                android:text="сторона сделки"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@id/amount_tv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintWidth_default="spread"
+                android:textSize="12sp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@id/name_sort_view"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

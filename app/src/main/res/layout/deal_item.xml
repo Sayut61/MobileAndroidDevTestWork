@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="15dp"
+        android:layout_marginHorizontal="4dp"
+        android:layout_marginVertical="8dp"
+        android:clickable="true"
+        app:cardElevation="7dp"
+        android:focusable="true"
+        android:foreground="?selectableItemBackground">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <TextView
+                android:id="@+id/time_stamp_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:gravity="center"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/name_tv"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintWidth_default="spread"
+                android:textSize="12sp" />
+
+        <com.google.android.material.divider.MaterialDivider
+                android:layout_width="1dp"
+                android:layout_height="0dp"
+                android:layout_marginHorizontal="4dp"
+                app:dividerColor="@color/black"
+                app:layout_constraintStart_toEndOf="@id/time_stamp_tv"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+                android:id="@+id/name_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:gravity="center"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@id/time_stamp_tv"
+                app:layout_constraintEnd_toStartOf="@+id/price_tv"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintWidth_default="spread"
+                android:textSize="16sp" />
+
+        <com.google.android.material.divider.MaterialDivider
+                android:layout_width="1dp"
+                android:layout_height="0dp"
+                android:layout_marginHorizontal="4dp"
+                app:dividerColor="@color/black"
+                app:layout_constraintStart_toEndOf="@id/name_tv"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+                android:id="@+id/price_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:gravity="center"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@id/name_tv"
+                app:layout_constraintEnd_toStartOf="@+id/amount_tv"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintWidth_default="spread"
+                android:textSize="16sp" />
+
+        <com.google.android.material.divider.MaterialDivider
+                android:layout_width="1dp"
+                android:layout_height="0dp"
+                android:layout_marginHorizontal="4dp"
+                app:dividerColor="@color/black"
+                app:layout_constraintStart_toEndOf="@id/price_tv"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+                android:id="@+id/amount_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:gravity="center"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@id/price_tv"
+                app:layout_constraintEnd_toStartOf="@+id/side_tv"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintWidth_default="spread"
+                android:textSize="16sp" />
+
+        <com.google.android.material.divider.MaterialDivider
+                android:layout_width="1dp"
+                android:layout_height="0dp"
+                android:layout_marginHorizontal="4dp"
+                app:dividerColor="@color/black"
+                app:layout_constraintStart_toEndOf="@id/amount_tv"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+                android:id="@+id/side_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:gravity="center"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@id/amount_tv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintWidth_default="spread"
+                android:textSize="16sp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
