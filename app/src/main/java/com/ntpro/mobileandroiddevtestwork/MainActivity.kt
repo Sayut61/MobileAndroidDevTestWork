@@ -2,6 +2,7 @@ package com.ntpro.mobileandroiddevtestwork
 
 import android.graphics.Color
 import android.os.Bundle
+import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -23,6 +24,11 @@ class MainActivity : AppCompatActivity() {
 
     private var sortStatus = SortingStatus.DATE
 
+    private val DATA_TIMEOUT = 500L
+    private var lastDataReceivedTime: Long = 0L
+
+    private var dataState = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -38,6 +44,7 @@ class MainActivity : AppCompatActivity() {
 
         server.subscribeToDeals { newDeals ->
             runOnUiThread {
+                lastDataReceivedTime = System.currentTimeMillis()
 
                 when (sortStatus) {
                     SortingStatus.AMOUNT -> {
@@ -69,6 +76,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.amountSortBtn.setOnClickListener {
+            if (dataState) {
+                adapter.sortItemsByAmount()
+            }
             setSortStatus(
                 Color.BLACK,
                 Color.BLACK,
@@ -80,6 +90,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.sortSideBtn.setOnClickListener {
+            if (dataState) {
+                adapter.sortItemsBySide()
+            }
             setSortStatus(
                 Color.BLACK,
                 Color.BLACK,
@@ -91,6 +104,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.sortPriceBtn.setOnClickListener {
+            if (dataState) {
+                adapter.sortItemsByPrice()
+            }
             setSortStatus(
                 Color.BLACK,
                 Color.BLACK,
@@ -102,6 +118,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.sortNameBtn.setOnClickListener {
+            if (dataState) {
+                adapter.sortItemsByName()
+            }
             setSortStatus(
                 Color.BLACK,
                 Color.RED,
@@ -113,6 +132,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.sortDateBtn.setOnClickListener {
+            if (dataState) {
+                adapter.sortItemsByTimeStamp()
+            }
             setSortStatus(
                 Color.RED,
                 Color.BLACK,
@@ -123,6 +145,27 @@ class MainActivity : AppCompatActivity() {
             )
         }
 
+    }
+
+    override fun onResume() {
+        startDataTimeoutCheck()
+        super.onResume()
+    }
+
+    private fun startDataTimeoutCheck() {
+        val handler = Handler()
+        handler.postDelayed({
+            val currentTime = System.currentTimeMillis()
+            val elapsedTime = currentTime - lastDataReceivedTime
+            if (elapsedTime >= DATA_TIMEOUT) {
+                // Данные перестали приходить
+                // Выполните необходимые действия
+                dataState = true
+            } else {
+                // Запустить проверку неактивности снова
+                startDataTimeoutCheck()
+            }
+        }, DATA_TIMEOUT)
     }
 
     private fun setSortStatus(
