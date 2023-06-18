@@ -11,28 +11,48 @@ import kotlin.math.round
 class DealsAdapter(private var deals: MutableList<Server.Deal>) :
     RecyclerView.Adapter<DealViewHolder>() {
 
-    fun sortItemsByTimeStamp() {
-        deals = deals.sortedBy { it.timeStamp } as MutableList<Server.Deal>
+    fun sortItemsByTimeStamp(reversed: Boolean) {
+        deals = if (reversed) {
+            deals.sortedByDescending { it.timeStamp } as MutableList<Server.Deal>
+        } else {
+            deals.sortedBy { it.timeStamp } as MutableList<Server.Deal>
+        }
         notifyDataSetChanged()
     }
 
-    fun sortItemsByName() {
-        deals = deals.sortedBy { it.instrumentName } as MutableList<Server.Deal>
+    fun sortItemsByName(reversed: Boolean) {
+        deals = if (reversed) {
+            deals.sortedByDescending { it.instrumentName } as MutableList<Server.Deal>
+        } else {
+            deals.sortedBy { it.instrumentName } as MutableList<Server.Deal>
+        }
         notifyDataSetChanged()
     }
 
-    fun sortItemsByPrice() {
-        deals = deals.sortedBy { it.price } as MutableList<Server.Deal>
+    fun sortItemsByPrice(reversed: Boolean) {
+        deals = if (reversed) {
+            deals.sortedByDescending { it.price } as MutableList<Server.Deal>
+        } else {
+            deals.sortedBy { it.price } as MutableList<Server.Deal>
+        }
         notifyDataSetChanged()
     }
 
-    fun sortItemsByAmount() {
-        deals = deals.sortedBy { it.amount } as MutableList<Server.Deal>
+    fun sortItemsByAmount(reversed: Boolean) {
+        deals = if (reversed) {
+            deals.sortedByDescending { it.amount } as MutableList<Server.Deal>
+        } else {
+            deals.sortedBy { it.amount } as MutableList<Server.Deal>
+        }
         notifyDataSetChanged()
     }
 
-    fun sortItemsBySide() {
-        deals = deals.sortedBy { it.side } as MutableList<Server.Deal>
+    fun sortItemsBySide(reversed: Boolean) {
+        deals = if (reversed) {
+            deals.sortedByDescending { it.side } as MutableList<Server.Deal>
+        } else {
+            deals.sortedBy { it.side } as MutableList<Server.Deal>
+        }
         notifyDataSetChanged()
     }
 

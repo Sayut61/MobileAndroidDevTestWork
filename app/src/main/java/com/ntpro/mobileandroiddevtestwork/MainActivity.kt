@@ -12,10 +12,6 @@ enum class SortingStatus {
     DATE, NAME, PRICE, AMOUNT, SIDE, NOTHING
 }
 
-enum class WaySorting {
-    UP, DOWN
-}
-
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
@@ -23,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
 
     private var sortStatus = SortingStatus.DATE
+    private var sortDirection = false
 
     private val DATA_TIMEOUT = 500L
     private var lastDataReceivedTime: Long = 0L
@@ -48,24 +45,24 @@ class MainActivity : AppCompatActivity() {
 
                 when (sortStatus) {
                     SortingStatus.AMOUNT -> {
-                        adapter.sortItemsByAmount()
+                        adapter.sortItemsByAmount(sortDirection)
                     }
 
                     SortingStatus.PRICE -> {
-                        adapter.sortItemsByPrice()
+                        adapter.sortItemsByPrice(sortDirection)
                     }
 
                     SortingStatus.NAME -> {
-                        adapter.sortItemsByName()
+                        adapter.sortItemsByName(sortDirection)
                     }
 
                     SortingStatus.SIDE -> {
-                        adapter.sortItemsBySide()
+                        adapter.sortItemsBySide(sortDirection)
                     }
 
                     else -> {
                         if (fullList.isNotEmpty()) {
-                            adapter.sortItemsByTimeStamp()
+                            adapter.sortItemsByTimeStamp(sortDirection)
                         } else {
                             fullList.add(newDeals)
                             adapter.updateDeals(newDeals)
@@ -75,9 +72,71 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        binding.upSortBtn.setOnClickListener {
+            setBackStatus(
+                Color.GREEN,
+                Color.GRAY,
+                true
+            )
+            if (dataState) {
+                when (sortStatus) {
+                    SortingStatus.AMOUNT -> {
+                        adapter.sortItemsByAmount(sortDirection)
+                    }
+
+                    SortingStatus.PRICE -> {
+                        adapter.sortItemsByPrice(sortDirection)
+                    }
+
+                    SortingStatus.NAME -> {
+                        adapter.sortItemsByName(sortDirection)
+                    }
+
+                    SortingStatus.SIDE -> {
+                        adapter.sortItemsBySide(sortDirection)
+                    }
+
+                    else -> {
+                        adapter.sortItemsByTimeStamp(sortDirection)
+                    }
+                }
+            }
+        }
+
+        binding.downSortBtn.setOnClickListener {
+            setBackStatus(
+                Color.GRAY,
+                Color.RED,
+                false
+            )
+            if (dataState) {
+                when (sortStatus) {
+                    SortingStatus.AMOUNT -> {
+                        adapter.sortItemsByAmount(sortDirection)
+                    }
+
+                    SortingStatus.PRICE -> {
+                        adapter.sortItemsByPrice(sortDirection)
+                    }
+
+                    SortingStatus.NAME -> {
+                        adapter.sortItemsByName(sortDirection)
+                    }
+
+                    SortingStatus.SIDE -> {
+                        adapter.sortItemsBySide(sortDirection)
+                    }
+
+                    else -> {
+                        adapter.sortItemsByTimeStamp(sortDirection)
+                    }
+                }
+            }
+        }
+
         binding.amountSortBtn.setOnClickListener {
             if (dataState) {
-                adapter.sortItemsByAmount()
+                adapter.sortItemsByAmount(sortDirection)
             }
             setSortStatus(
                 Color.BLACK,
@@ -91,7 +150,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.sortSideBtn.setOnClickListener {
             if (dataState) {
-                adapter.sortItemsBySide()
+                adapter.sortItemsBySide(sortDirection)
             }
             setSortStatus(
                 Color.BLACK,
@@ -105,7 +164,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.sortPriceBtn.setOnClickListener {
             if (dataState) {
-                adapter.sortItemsByPrice()
+                adapter.sortItemsByPrice(sortDirection)
             }
             setSortStatus(
                 Color.BLACK,
@@ -119,7 +178,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.sortNameBtn.setOnClickListener {
             if (dataState) {
-                adapter.sortItemsByName()
+                adapter.sortItemsByName(sortDirection)
             }
             setSortStatus(
                 Color.BLACK,
@@ -133,7 +192,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.sortDateBtn.setOnClickListener {
             if (dataState) {
-                adapter.sortItemsByTimeStamp()
+                adapter.sortItemsByTimeStamp(sortDirection)
             }
             setSortStatus(
                 Color.RED,
@@ -144,7 +203,6 @@ class MainActivity : AppCompatActivity() {
                 SortingStatus.DATE
             )
         }
-
     }
 
     override fun onResume() {
@@ -158,14 +216,21 @@ class MainActivity : AppCompatActivity() {
             val currentTime = System.currentTimeMillis()
             val elapsedTime = currentTime - lastDataReceivedTime
             if (elapsedTime >= DATA_TIMEOUT) {
-                // Данные перестали приходить
-                // Выполните необходимые действия
                 dataState = true
             } else {
-                // Запустить проверку неактивности снова
                 startDataTimeoutCheck()
             }
         }, DATA_TIMEOUT)
+    }
+
+    private fun setBackStatus(
+        color1: Int,
+        color2: Int,
+        status: Boolean
+    ) {
+        binding.upSortBtn.setColorFilter(color1)
+        binding.downSortBtn.setColorFilter(color2)
+        sortDirection = status
     }
 
     private fun setSortStatus(
