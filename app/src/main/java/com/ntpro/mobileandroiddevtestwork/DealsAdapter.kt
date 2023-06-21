@@ -11,53 +11,13 @@ import kotlin.math.round
 class DealsAdapter(private var deals: MutableList<Server.Deal>) :
     RecyclerView.Adapter<DealViewHolder>() {
 
-    fun sortItemsByTimeStamp(reversed: Boolean) {
-        deals = if (reversed) {
-            deals.sortedByDescending { it.timeStamp } as MutableList<Server.Deal>
+    fun updateDeals(isSorted: Boolean, newDeals: List<Server.Deal>) {
+        if (isSorted) {
+            deals.clear()
+            deals.addAll(newDeals)
         } else {
-            deals.sortedBy { it.timeStamp } as MutableList<Server.Deal>
+            deals.addAll(newDeals)
         }
-        notifyDataSetChanged()
-    }
-
-    fun sortItemsByName(reversed: Boolean) {
-        deals = if (reversed) {
-            deals.sortedByDescending { it.instrumentName } as MutableList<Server.Deal>
-        } else {
-            deals.sortedBy { it.instrumentName } as MutableList<Server.Deal>
-        }
-        notifyDataSetChanged()
-    }
-
-    fun sortItemsByPrice(reversed: Boolean) {
-        deals = if (reversed) {
-            deals.sortedByDescending { it.price } as MutableList<Server.Deal>
-        } else {
-            deals.sortedBy { it.price } as MutableList<Server.Deal>
-        }
-        notifyDataSetChanged()
-    }
-
-    fun sortItemsByAmount(reversed: Boolean) {
-        deals = if (reversed) {
-            deals.sortedByDescending { it.amount } as MutableList<Server.Deal>
-        } else {
-            deals.sortedBy { it.amount } as MutableList<Server.Deal>
-        }
-        notifyDataSetChanged()
-    }
-
-    fun sortItemsBySide(reversed: Boolean) {
-        deals = if (reversed) {
-            deals.sortedByDescending { it.side } as MutableList<Server.Deal>
-        } else {
-            deals.sortedBy { it.side } as MutableList<Server.Deal>
-        }
-        notifyDataSetChanged()
-    }
-
-    fun updateDeals(newDeals: List<Server.Deal>) {
-        deals.addAll(newDeals)
         notifyDataSetChanged()
     }
 

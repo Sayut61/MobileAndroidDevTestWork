@@ -138,7 +138,7 @@
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
-                android:id="@+id/amount_sort_btn"
+                android:id="@+id/sort_amount_btn"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
